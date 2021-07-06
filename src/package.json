@@ -1,0 +1,22 @@
+{
+  "name": "sls-demo-msn-todo",
+  "version": "1.0.0",
+  "description": "Serverless Todo Demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ole3021/sls-demo-msn-todo.git"
+  },
+  "author": "Oliver.W",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ole3021/sls-demo-msn-todo/issues"
+  },
+  "homepage": "https://github.com/ole3021/sls-demo-msn-todo#readme",
+  "dependencies": {
+    "pg": "^8.6.0"
+  }
+}

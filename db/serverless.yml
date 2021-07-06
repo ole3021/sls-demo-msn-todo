@@ -1,0 +1,12 @@
+component: postgresql #(必填) 引用 component 的名称，当前用到的是 postgresql 组件
+name: sls-demo-msn-DB # (必填) 该 postgresql 组件创建的实例名称
+
+inputs:
+  region: ap-guangzhou # 可选 ap-guangzhou, ap-shanghai, ap-beijing
+  zone: ap-guangzhou-2 # 可选 ap-guangzhou-2, ap-shanghai-2, ap-beijing-3
+  dBInstanceName: ${name}
+  extranetAccess: true
+  vpcConfig:
+    vpcId: ${output:${stage}:${app}:sls-demo-msn-vpc.vpcId} # 私有网络Id
+    subnetId: ${output:${stage}:${app}:sls-demo-msn-vpc.subnetId} # 子网Id
+

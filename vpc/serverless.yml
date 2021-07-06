@@ -1,0 +1,8 @@
+component: vpc # [必选]要使用组件，更多组件请查看 https://github.com/serverless-components
+name: sls-demo-msn-vpc # [必选]组件实例名称
+
+inputs:
+  region: ap-guangzhou
+  zone: ap-guangzhou-2
+  vpcName: ${name} # 实例名称
+  subnetName: sls-demo-msn-subnet # 子网的名称
