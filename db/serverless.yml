@@ -4,7 +4,7 @@ name: sls-demo-msn-DB # (必填) 该 postgresql 组件创建的实例名称
 inputs:
   region: ap-guangzhou # 可选 ap-guangzhou, ap-shanghai, ap-beijing
   zone: ap-guangzhou-2 # 可选 ap-guangzhou-2, ap-shanghai-2, ap-beijing-3
-  dBInstanceName: ${name}
+  dBInstanceName: ${name}-${stage} # 数据库实例名称唯一，且同一个数据库只能存在同一个vpc内。
   extranetAccess: true
   vpcConfig:
     vpcId: ${output:${stage}:${app}:sls-demo-msn-vpc.vpcId} # 私有网络Id

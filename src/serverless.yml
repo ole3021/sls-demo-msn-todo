@@ -17,17 +17,17 @@ inputs:
     vpcId: ${output:${stage}:${app}:sls-demo-msn-vpc.vpcId} # 私有网络Id
     subnetId: ${output:${stage}:${app}:sls-demo-msn-vpc.subnetId} # 子网Id
   installDependency: true # 是否在线安装依赖
-  timeout: 3
+  timeout: 10
   functions:
     allTodo:
       handler: todos.all
       memorySize: 256
     addTodo:
       handler: todos.add
-      timeout: 20
+      timeout: 15
     completeTodo:
       handler: todos.comp
-      timeout: 20
+      timeout: 15
   triggers:
     - type: apigw
       parameters:

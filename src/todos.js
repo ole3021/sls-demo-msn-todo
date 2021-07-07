@@ -28,6 +28,8 @@ const initDB = async () => {
  * 获取所有Todo事项
  */
 exports.all = async (event, context) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+
   await initDB();
 
   const { rows } = await client.query({ text: "SELECT * FROM todo" });
@@ -42,6 +44,8 @@ exports.all = async (event, context) => {
  * 添加新的Todo事项
  */
 exports.add = async (event, context) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+
   const { title, note } = JSON.parse(event.body);
   if (!title) {
     return {
@@ -71,6 +75,8 @@ exports.add = async (event, context) => {
  * 完成指定Todo事项
  */
 exports.comp = async (event, context) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+
   const todoId = event.pathParameters.id;
 
   if (!todoId && !isNaN(todoId)) {
