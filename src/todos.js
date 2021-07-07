@@ -6,7 +6,7 @@ const client = new Client({
 });
 
 /**
- * 初始化数据ku
+ * 初始化数据库和表结构
  */
 const initDB = async () => {
   const isConnected = client && client._connected;
@@ -28,8 +28,8 @@ const initDB = async () => {
  * 获取所有Todo事项
  */
 exports.all = async (event, context) => {
+  // async 需要关闭事件循环等待，以避免日志记录超时或函数无返回的问题。
   context.callbackWaitsForEmptyEventLoop = false;
-
   await initDB();
 
   const { rows } = await client.query({ text: "SELECT * FROM todo" });
@@ -44,8 +44,8 @@ exports.all = async (event, context) => {
  * 添加新的Todo事项
  */
 exports.add = async (event, context) => {
+  // async 需要关闭事件循环等待，以避免日志记录超时或函数无返回的问题。
   context.callbackWaitsForEmptyEventLoop = false;
-
   const { title, note } = JSON.parse(event.body);
   if (!title) {
     return {
@@ -75,8 +75,8 @@ exports.add = async (event, context) => {
  * 完成指定Todo事项
  */
 exports.comp = async (event, context) => {
+  // async 需要关闭事件循环等待，以避免日志记录超时或函数无返回的问题。
   context.callbackWaitsForEmptyEventLoop = false;
-
   const todoId = event.pathParameters.id;
 
   if (!todoId && !isNaN(todoId)) {
